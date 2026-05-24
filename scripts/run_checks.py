@@ -17,16 +17,16 @@ RESET = "\033[0m"
 def _run_step(name: str, cmd: list[str]) -> bool:
     """Run a single check step and return True if it passed."""
     print(f"\n{BOLD}{YELLOW}{'=' * 60}{RESET}")
-    print(f"{BOLD}  ▶ {name}{RESET}")
+    print(f"{BOLD}  > {name}{RESET}")
     print(f"{YELLOW}{'=' * 60}{RESET}\n")
 
     result = subprocess.run(cmd, cwd=".")  # noqa: S603
     passed = result.returncode == 0
 
     if passed:
-        print(f"\n{GREEN}  ✔ {name} — PASSED{RESET}")
+        print(f"\n{GREEN}  + {name} — PASSED{RESET}")
     else:
-        print(f"\n{RED}  ✘ {name} — FAILED{RESET}")
+        print(f"\n{RED}  - {name} — FAILED{RESET}")
 
     return passed
 
@@ -61,14 +61,14 @@ def main() -> None:
     print(f"{'=' * 60}")
     all_passed = True
     for name, passed in results:
-        icon = f"{GREEN}✔{RESET}" if passed else f"{RED}✘{RESET}"
+        icon = f"{GREEN}+{RESET}" if passed else f"{RED}-{RESET}"
         print(f"  {icon} {name}")
         if not passed:
             all_passed = False
 
     print()
     if all_passed:
-        print(f"{GREEN}{BOLD}  All checks passed! 🚀{RESET}")
+        print(f"{GREEN}{BOLD}  All checks passed!{RESET}")
         sys.exit(0)
     else:
         print(f"{RED}{BOLD}  Some checks failed.{RESET}")
