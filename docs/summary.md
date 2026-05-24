@@ -20,3 +20,10 @@ cp .env.example .env
 uv run python main.py
 # Документация: http://localhost:8000/docs
 ```
+
+## Деплой на Railway
+- Проект интегрирован с PaaS-платформой Railway.
+- Добавлена поддержка динамического считывания порта через переменную окружения `PORT` (`os.environ.get("PORT", 8000)`).
+- Проект переведен в режим `package = false` (`[tool.uv]`) для оптимизации слоев сборки Docker (отключение сборки wheel).
+- Доступно по адресу: https://backend-template.up.railway.app/api/v1/health/
+
