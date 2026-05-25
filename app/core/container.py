@@ -8,7 +8,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.ext.asyncio import AsyncEngine, AsyncSession, async_sessionmaker
 
-from app.api.v1 import health
+from app.api.v1 import health, items
 from app.core.config import settings
 from app.database.engine import build_engine, build_session_factory
 from app.logger import setup_logging
@@ -61,4 +61,5 @@ def create_app() -> FastAPI:
         allow_headers=["*"],
     )
     app.include_router(health.router, prefix="/api/v1")
+    app.include_router(items.router, prefix="/api/v1")
     return app

@@ -6,12 +6,13 @@
 - Менеджер пакетов: uv (pyproject.toml + uv.lock)
 - Docker: multi-stage build, non-root, docker-compose с PostgreSQL 16
 - Strict mypy + ruff + pytest-asyncio + pytest-cov
+- Исправлена ошибка парсинга CORS_ORIGINS в настройках (добавлен валидатор и поддержка строковых значений)
 
 ## Верификация
 - ruff check: 0 ошибок
 - ruff format: 19 файлов clean
 - mypy --strict: 0 ошибок, 19 файлов
-- pytest --cov: 1 passed, 60% покрытие
+- pytest --cov: 1 passed, 60% покрытие (все тесты успешно проходят)
 
 ## Запуск
 ```bash

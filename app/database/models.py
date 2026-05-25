@@ -20,3 +20,13 @@ class TimestampMixin:
         server_default=func.now(),
         onupdate=func.now(),
     )
+
+
+class Item(Base, TimestampMixin):
+    """Item model representing a product or task."""
+
+    __tablename__ = "items"
+
+    id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    title: Mapped[str] = mapped_column(index=True)
+    description: Mapped[str | None] = mapped_column(default=None)
