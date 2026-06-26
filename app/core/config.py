@@ -19,5 +19,10 @@ class Settings(BaseSettings):
     log_format: str = "text"  # "json" | "text"
     cors_origins: list[str] = ["*"]
 
+    jwt_secret_key: str = "change-me-in-production"
+    jwt_algorithm: str = "HS256"
+    access_token_expire_minutes: int = 15
+    refresh_token_expire_days: int = 7
+
 
 settings = Settings()

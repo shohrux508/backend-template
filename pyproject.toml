@@ -16,6 +16,9 @@ dependencies = [
     "pydantic-settings>=2.6.0",
     "python-dotenv>=1.0.0",
     "loguru>=0.7.0",
+    "python-jose[cryptography]>=3.3.0",
+    "pydantic[email]>=2.13.4",
+    "bcrypt>=5.0.0",
 ]
 
 [project.optional-dependencies]
@@ -57,3 +60,15 @@ warn_unused_configs = true
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 testpaths = ["tests"]
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "mypy>=2.1.0",
+    "pydantic>=2.13.4",
+    "pytest>=9.0.3",
+    "pytest-asyncio>=1.3.0",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.15.14",
+    "types-passlib>=1.7.7",
+]
